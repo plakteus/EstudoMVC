@@ -1,0 +1,41 @@
+
+USE [EstudoMVC]
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[TB_Produto](
+	[IdProduto] [int] IDENTITY(1,1) NOT NULL,
+	[Nome] [varchar](max) NULL,
+	[Descricao] [varchar](max) NULL,
+	[Preco] [decimal](18, 2) NULL,
+	[Categoria] [varchar](max) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[IdProduto] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+SET IDENTITY_INSERT [dbo].[TB_Produto] ON 
+
+GO
+INSERT [dbo].[TB_Produto] ([IdProduto], [Nome], [Descricao], [Preco], [Categoria]) VALUES (1, N'Produto 1', N'Descricao P1', CAST(10.10 AS Decimal(18, 2)), N'Categoria 1')
+GO
+INSERT [dbo].[TB_Produto] ([IdProduto], [Nome], [Descricao], [Preco], [Categoria]) VALUES (2, N'Produto 2', N'Descricao P2', CAST(20.20 AS Decimal(18, 2)), N'Categoria 2')
+GO
+INSERT [dbo].[TB_Produto] ([IdProduto], [Nome], [Descricao], [Preco], [Categoria]) VALUES (3, N'Produto 3', N'Descricao P3', CAST(30.30 AS Decimal(18, 2)), N'Categoria 3')
+GO
+INSERT [dbo].[TB_Produto] ([IdProduto], [Nome], [Descricao], [Preco], [Categoria]) VALUES (4, N'Produto 4', N'Descricao P4', CAST(40.40 AS Decimal(18, 2)), N'Categoria 4')
+GO
+INSERT [dbo].[TB_Produto] ([IdProduto], [Nome], [Descricao], [Preco], [Categoria]) VALUES (5, N'Produto 5', N'Descricao P5', CAST(50.50 AS Decimal(18, 2)), N'Categoria 5')
+GO
+INSERT [dbo].[TB_Produto] ([IdProduto], [Nome], [Descricao], [Preco], [Categoria]) VALUES (6, N'Produto 6', N'Descricao P6', CAST(60.60 AS Decimal(18, 2)), N'Categoria 6')
+GO
+SET IDENTITY_INSERT [dbo].[TB_Produto] OFF
+GO
