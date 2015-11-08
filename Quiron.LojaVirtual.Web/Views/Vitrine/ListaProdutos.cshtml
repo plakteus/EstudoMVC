@@ -1,51 +1,24 @@
-﻿@model IEnumerable<Quiron.LojaVirtual.Dominio.Entidades.Produto>
+﻿@using Quiron.LojaVirtual.Web.HtmlHelpers
 
-@{
-    ViewBag.Title = "ListaProdutos";
+@model Quiron.LojaVirtual.Web.Models.ProdutosViewModel
+
+
+
+
+@foreach (var item in Model.Produtos)
+{
+    <div>
+        <h3>@item.Nome</h3>
+        @item.Descricao
+        <h3>@item.Preco</h3>
+    </div>
 }
 
-<h2>ListaProdutos</h2>
+@* Trabalhando com Paginação *@
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Nome)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Descricao)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Preco)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Categoria)
-        </th>
-        <th></th>
-    </tr>
+@* A chamada abaixo recebe como parâmetro a entidade de Paginacao, o delegate com o nome da action a ser chamada 
+    e o nome do parâmetro do método do controller, recebendo o valor da página a ser chamada.*@
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Descricao)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Preco)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Categoria)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdProduto }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdProduto }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdProduto })
-        </td>
-    </tr>
-}
+@Html.PageLink(Model.Paginacao, x => Url.Action("ListaProdutos", new { pagina = x }))
 
-</table>
+
