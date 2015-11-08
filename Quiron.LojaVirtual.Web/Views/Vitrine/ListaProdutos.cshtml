@@ -7,18 +7,19 @@
 
 @foreach (var item in Model.Produtos)
 {
-    <div>
-        <h3>@item.Nome</h3>
-        @item.Descricao
-        <h3>@item.Preco</h3>
+    <div class="well">
+        @Html.Partial("_ProdutoDetalhes", item)
     </div>
 }
 
-@* Trabalhando com Paginação *@
+<div class="btn-group pull-right">
 
-@* A chamada abaixo recebe como parâmetro a entidade de Paginacao, o delegate com o nome da action a ser chamada 
-    e o nome do parâmetro do método do controller, recebendo o valor da página a ser chamada.*@
+    @* Trabalhando com Paginação *@
 
-@Html.PageLink(Model.Paginacao, x => Url.Action("ListaProdutos", new { pagina = x }))
+    @* A chamada abaixo recebe como parâmetro a entidade de Paginacao, o delegate com o nome da action a ser chamada
+        e o nome do parâmetro do método do controller, recebendo o valor da página a ser chamada.*@
+
+    @Html.PageLink(Model.Paginacao, x => Url.Action("ListaProdutos", new { pagina = x }))
 
 
+</div>
