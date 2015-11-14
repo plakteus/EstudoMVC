@@ -19,7 +19,7 @@
     @* A chamada abaixo recebe como parâmetro a entidade de Paginacao, o delegate com o nome da action a ser chamada
         e o nome do parâmetro do método do controller, recebendo o valor da página a ser chamada.*@
 
-    @Html.PageLink(Model.Paginacao, x => Url.Action("ListaProdutos", new { pagina = x }))
+    @Html.PageLink(Model.Paginacao, x => Url.Action("ListaProdutos", new { pagina = x, categoria = Model.CategoriaAtual }))
 
 
 </div>

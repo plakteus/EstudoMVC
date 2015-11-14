@@ -13,17 +13,62 @@ namespace Quiron.LojaVirtual.Web
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            /* 1- Rota  */
             routes.MapRoute(
-                name: null,
-                url: "Pagina{pagina}",  /*   Aqui especifíco como será a chamada da URL */
-                defaults: new { controller = "Vitrine", action = "ListaProdutos" }
+                null,
+                "",
+                new
+                {
+                    controller = "Vitrine",
+                    action = "ListaProdutos",
+                    categoria = (string)null,
+                    pagina = 1
+                });
+
+            /* 2- Rota */
+            routes.MapRoute(
+                null,
+                "Pagina{pagina}",
+                new
+                {
+                    controller = "Vitrine",
+                    action = "ListaProdutos",
+                    categoria = (string)null
+                },
+                new { pagina = @"\d+" }
                 );
 
+            /* 3- Rota sem a categoria */
             routes.MapRoute(
-                name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Vitrine", action = "ListaProdutos", id = UrlParameter.Optional }
-            );
+                null,
+                "{categoria}",
+                new
+                {
+                    controller = "Vitrine",
+                    action = "ListaProdutos",
+                    pagina = 1
+                });
+
+            /* 4- Rota completa : Categoria e Pagina */
+            routes.MapRoute(
+                null,
+                "{categoria}Pagina{pagina}",
+                new
+                {
+                    controller = "Vitrine",
+                    action = "ListaProdutos"
+                },
+                new { pagina = @"\d+" }
+                );
+
+
+            routes.MapRoute(null, "{controller}/{action}");
+
+            //routes.MapRoute(
+            //    name: "Default",
+            //    url: "{controller}/{action}/{id}",
+            //    defaults: new { controller = "Vitrine", action = "ListaProdutos", id = UrlParameter.Optional }
+            //);
         }
     }
 }
