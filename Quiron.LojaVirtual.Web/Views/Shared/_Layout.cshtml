@@ -14,12 +14,14 @@
     <div class="navbar navbar-inverse" role="navigation">
         <a class="navbar-brand" href="#">Quiron Loja Virtual - Seu esporte é aqui </a>
 
+        <!-- Adicionar aqui a partial View referente ao carrinho de compras-->
+        @Html.Action("Resumo", "Carrinho")
     </div>
 
     <div class="row panel">
         <div id="categorias" class="col-xs-3">
-            
-            @Html.Action("Menu","Categoria")
+
+            @Html.Action("Menu", "Categoria")
 
         </div>
         <div id="categorias" class="col-xs-8">
