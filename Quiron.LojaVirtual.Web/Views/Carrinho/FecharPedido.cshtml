@@ -90,6 +90,37 @@
 
 }
 
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+<script>
+
+    $("#CEP").change(function (e) {
+
+        var cep = $(this).val().replace("-", "");
+
+        e.preventDefault(); // evitando o post após digitação
+
+        $("#Endereco").val("");
+        $("#Bairro").val("");
+        $("#Cidade").val("");
+        $("#Estado").val("");
+
+        $.getJSON("http://cep.republicavirtual.com.br/web_cep.php?cep=" + cep + "&formato=json", {}, function (data) {
+
+            if (data.resultado_txt = 'sucesso - cep completo') {
+                $("#Endereco").val(data.tipo_logradouro + " " + data.logradouro);
+                $("#Bairro").val(data.bairro);
+                $("#Cidade").val(data.cidade);
+                $("#Estado").val(data.uf);
+            }
+
+        });
+
+    });
+
+
+</script>
+
 
 
 
